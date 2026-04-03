@@ -9,9 +9,8 @@ spec:
      project: roboshop
      component: frontend 
      environment: dev
-     ports: 
-     - protocol: TCP
-       port: 80 #service port 
-       targetPort: 80 #container port 
-       nodePort : 32141
-  
+  ports: 
+  - protocol: TCP
+    port: 80 #service port 
+    targetPort: 80 #container port 
+    nodePort : 32141

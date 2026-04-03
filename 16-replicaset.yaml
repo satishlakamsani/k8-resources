@@ -17,14 +17,14 @@ spec:
       purpose: rs-demo
       tier: frontend
       component: frontend 
-    template: 
-      metadata: 
-         labels:
-           project: roboshop
-           purpose: rs-demo
-           tier: frontend
-           component: frontend
-      spec: 
-        containers: 
-        - name: nginx
-          image: nginx:stable-alpine3.23-perl
+  template: 
+    metadata: 
+        labels:
+          project: roboshop
+          purpose: rs-demo
+          tier: frontend
+          component: frontend
+    spec: 
+      containers: 
+      - name: nginx
+        image: nginx:stable-alpine3.23-perl

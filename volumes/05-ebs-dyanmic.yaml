@@ -1,10 +1,30 @@
-kind: StorageClass
-apiVersion: storage.k8s.io/v1
-metadata:
-  name: roboshop-efs
-provisioner: efs.csi.aws.com
-parameters:
-  provisioningMode: efs-ap
-  fileSystemId: fs-0a74f07d59bf6910a
-  directoryPerms: "700"
-  basePath: "/roboshop"
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata: 
+    name: ebs-dynamic
+spec: 
+  accessModes: 
+    -ReadWriteOnce
+  storageClassName: roboshop-ebs
+  resources: 
+    requests: 
+      storage: 4Gi
+
+---
+apiVersion: v1
+kind: Pod 
+metadata: 
+  name: app 
+spec: 
+  containers: 
+  - name: nginx 
+    image: nginx
+    volumeMounts: 
+    - name: html-data
+      mountPath: /usr/share/nginx/html 
+  nodeSelector: 
+    topology.kubernetes.io/zone: us-east-1d 
+  volumes: 
+  - name: html-data
+    PersistentVolumeClaim:
+     claimName: ebs-dyanmic

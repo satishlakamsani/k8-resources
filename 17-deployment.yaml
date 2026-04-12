@@ -55,7 +55,7 @@ kind: Service
 metadata:
   name: nginx-headless
 spec: 
- clusterIp: None
+ clusterIP: None
  selector: 
    #labels are used as selectors
    project: roboshop
